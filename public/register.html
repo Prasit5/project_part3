@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - Websec Wears</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #registerContainer {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    #registerForm {
+      margin-bottom: 20px;
+    }
+
+    #registerForm input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    #registerForm button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #registerForm button:hover {
+      background-color: #2980b9;
+    }
+
+    #loginLink {
+      text-decoration: none;
+      color: #3498db;
+      font-weight: bold;
+    }
+
+    #loginLink:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div id="registerContainer">
+    <h1>Websec Wears Registration</h1>
+    <form id="registerForm">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required pattern="^(?=.*[A-Za-z])(?=.*\d).{6,}$">
+      <input type="password" name="retypePassword" placeholder="Retype Password" required>
+      <label for="sellerAccount">
+        <input type="checkbox" id="sellerAccount" name="sellerAccount"> Create Seller Account
+      </label>
+      <button type="submit">Register</button>
+    </form>
+    <div id="registrationMessage"></div>
+    <p>Already have an account? <a id="loginLink" href="/login.html">Login here</a></p>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      const jsonData = Object.fromEntries(formData.entries());
+      fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonData),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Handle response here (e.g., redirect to login page or display message)
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</body>
+</html>

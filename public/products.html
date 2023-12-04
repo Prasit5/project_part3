@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: stretch;
+    }
+
+    .product {
+      width: 300px;
+      margin: 10px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .product img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul id="mainNav">
+        
+        <li><a href="/logout.html" id="logoutLink" >Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="product">
+      <img src="shoes.jpeg" alt="Adidas Shoes">
+      <h2>Adidas Shoes</h2>
+      <p>Description: High-performance sports shoes from Adidas.</p>
+      <p>Size: Various sizes available</p>
+      <p>Price: $99.99</p>
+    </div>
+    <div class="product">
+      <img src="jersey.jpg" alt="Sports Jersey">
+      <h2>Sports Jersey</h2>
+      <p>Description: Stylish sports jersey for your favorite team.</p>
+      <p>Size: Available in S, M, L</p>
+      <p>Price: $49.99</p>
+    </div>
+    <div class="product">
+      <img src="football.jpeg" alt="Football">
+      <h2>Football</h2>
+      <p>Description: Premium quality football for your games.</p>
+      <p>Size: Standard size</p>
+      <p>Price: $29.99</p>
+    </div>
+  </main>
+</body>
+</html>
